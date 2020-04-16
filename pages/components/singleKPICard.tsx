@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardHeader, LinearProgress, CardContent, Typography } from "@material-ui/core"
 import axios from 'axios';
 import numeral from 'numeral';
-import * as utilities from '../utils/utilities';
+import * as utilities from '../../utils/utilities';
 
 
 export default class SingleKPICard extends React.Component<{ title: string, query: any }> {

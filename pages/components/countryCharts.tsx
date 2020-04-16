@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 import moment from 'moment';
 import React from "react";
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import * as colors from '../utils/colors';
+import * as colors from '../../utils/colors';
 
 const query = `
 with _confirmed AS (

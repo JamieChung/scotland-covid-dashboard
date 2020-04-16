@@ -12,7 +12,7 @@ import CountryCharts from './components/countryCharts';
 import TopAreasTable from './components/topAreasTable';
 import TopCountriesTable from './components/topCountriesTable';
 import SingleKPICard from './components/singleKPICard';
-import * as queries from './utils/queries';
+import * as queries from '../utils/queries';
 
 const HomePage = () => {
 
