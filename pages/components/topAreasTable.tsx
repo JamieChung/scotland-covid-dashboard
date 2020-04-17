@@ -1,12 +1,15 @@
-import React from "react";
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, LinearProgress } from "@material-ui/core";
+import { ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, LinearProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import axios from 'axios';
 import * as _ from 'lodash';
 import numeral from 'numeral';
+import React from "react";
+import AreaExpansionPanelDetail from './AreaExpansionPanelDetail';
 
 const query = `
 SELECT
   Area,
+  AreaCode,
   CAST(COALESCE(TotalCases, 0) AS Integer) AS TotalCases,
   Date
 FROM
@@ -62,24 +65,38 @@ export default class TopAreasTable extends React.Component {
         }
 
         return (
-            <TableContainer component={Paper}>
-                <Table size="small">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Area</TableCell>
-                            <TableCell>Confirmed Cases</TableCell>
-                            <TableCell>Last Updated</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {this.state.data.map(row => <TableRow key={(row.Date + row.Area)}>
-                            <TableCell>{row.Area}</TableCell>
-                            <TableCell>{numeral(row.TotalCases).format('0,0')}</TableCell>
-                            <TableCell>{row.Date}</TableCell>
-                        </TableRow>)}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+            <div>
+                {/* <TableContainer component={Paper}>
+                    <Table size="small">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Area</TableCell>
+                                <TableCell>Confirmed Cases</TableCell>
+                                <TableCell>Last Updated</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {this.state.data.map(row => <TableRow key={(row.Date + row.Area)}>
+                                <TableCell>{row.Area}</TableCell>
+                                <TableCell>{numeral(row.TotalCases).format('0,0')}</TableCell>
+                                <TableCell>{row.Date}</TableCell>
+                            </TableRow>)}
+                        </TableBody>
+                    </Table>
+                </TableContainer> */}
+
+                {this.state.data.map(row =>
+                    <ExpansionPanel key={(row.AreaCode)} TransitionProps={{ unmountOnExit: true }}>
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                            <Typography style={{ flexBasis: '80%' }}>{row.Area}</Typography>
+                            <Typography style={{ color: '#AAA' }}>Confirmed Cases: {numeral(row.TotalCases).format('0,0')}</Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                            <AreaExpansionPanelDetail areaCode={row.AreaCode} area={row.Area} />
+                        </ExpansionPanelDetails>
+                    </ExpansionPanel>
+                )}
+            </div>
         )
     }
 }

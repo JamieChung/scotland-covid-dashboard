@@ -98,3 +98,18 @@ ORDER BY
   Date DESC
 LIMIT 1
 `;
+
+
+export const QUERY_TOTAL_CASES_BY_AREA = `
+SELECT
+  Area,
+  AreaCode,
+  CAST(COALESCE(TotalCases, 0) AS Integer) AS TotalCases,
+  Date
+FROM
+  cases
+WHERE
+  Country = 'Scotland'
+  AND (AreaCode = '##AREACODE##' OR Area = '##AREA##')
+ORDER BY Date ASC
+`;

@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as _ from 'lodash';
 import moment from 'moment';
 import React from "react";
-import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis, Brush } from 'recharts';
 import * as colors from '../../utils/chartcolors';
 
 const query = `
@@ -89,7 +89,8 @@ function singleCountryChart(title, data) {
             <Legend />
             <Tooltip />
             <CartesianGrid strokeDasharray="5 5" />
-            <YAxis label={{ value: 'Frequency', angle: -90, position: 'insideLeft' }} />
+            <YAxis />
+            <Brush dataKey="Date" height={30} stroke="#8884d8" />
             <XAxis
               dataKey="Date"
               allowDuplicatedCategory={false}
@@ -137,7 +138,7 @@ export default class CountryCharts extends React.Component {
 
     return (
       <div>
-        {singleCountryChart('Scotland - Confirmed Cases, Tests and Cases', this.state.data['Scotland'])}
+        {singleCountryChart('Scotland Confirmed Cases, Tests and Deaths', this.state.data['Scotland'])}
       </div>
     )
   }

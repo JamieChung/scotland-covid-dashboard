@@ -1,4 +1,4 @@
-import { ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, Grid, makeStyles } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
@@ -8,54 +8,8 @@ import CountryCharts from '../components/countryCharts';
 import SingleKPICard from '../components/singleKPICard';
 import TopAreasTable from '../components/topAreasTable';
 import TopCountriesTable from '../components/topCountriesTable';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import SingleTrendCard from './singleTrendCard';
+import ICUTrendCard from './ICUTrendCard';
 import StaffAbsencesCard from './StaffAbsencesCard';
-
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-    },
-    heading: {
-        fontSize: theme.typography.pxToRem(15),
-        flexBasis: '33.33%',
-        flexShrink: 0,
-    },
-    secondaryHeading: {
-        fontSize: theme.typography.pxToRem(15),
-        color: theme.palette.text.secondary,
-    },
-}));
-
-export function areaExpansions() {
-
-    const classes = {
-        heading: {
-            flexBasis: '33.33%',
-            flexShrink: 0
-        }
-    };
-
-    return (
-        <div>
-            <ExpansionPanel>
-                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography>Areas #1</Typography>
-                    <Typography>Descripton of Area #1</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                    <Typography>Details of area 1</Typography>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel>
-                <ExpansionPanelSummary>
-                    <Typography>Areas #2</Typography>
-                </ExpansionPanelSummary>
-            </ExpansionPanel>
-        </div>
-    )
-}
 
 export default class App extends React.Component {
 
@@ -65,6 +19,9 @@ export default class App extends React.Component {
                 <Typography variant="h4">Scotland COVID-19 Dashboard</Typography>
                 <Typography variant="overline" style={{ marginBottom: 25, display: 'block' }}>Updated Daily - BST/GMT</Typography>
                 <Grid container spacing={3}>
+                    <Grid item xs={12}>
+                        <Typography variant="h5">Scotland Overview</Typography>
+                    </Grid>
                     <Grid item xs={12} md={6}>
                         <SingleKPICard title="Total number of confirmed cases in Scotland" query={queries.QUERY_TOTAL_CONFIRMED_CASES_SCOTLAND} />
                     </Grid>
@@ -84,25 +41,28 @@ export default class App extends React.Component {
                         <SingleKPICard title="Latest daily number of deaths in Scotland" query={queries.QUERY_DAILY_CHANGE_DEATHS_SCOTLAND} />
                     </Grid>
                     <Grid item xs={12}>
-                        {areaExpansions()}
+                        <CountryCharts />
                     </Grid>
                     <Grid item xs={12}>
-                        <CountryCharts />
+                        <ICUTrendCard title="Scotland Intensive Care (ICU) Utilisation" query="2141" />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <StaffAbsencesCard title="Scotland Hospital Staff Absences" query="2141" />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant="h5">Scotland Regions</Typography>
                     </Grid>
                     <Grid item xs={12}>
                         <TopAreasTable />
                     </Grid>
                     <Grid item xs={12}>
-                        <TopCountriesTable />
-                    </Grid>
-                    <Grid item xs={12}>
                         <AreasCharts />
                     </Grid>
                     <Grid item xs={12}>
-                        <SingleTrendCard title="ICU" query="2141" />
+                        <Typography variant="h5">United Kingdom Overview</Typography>
                     </Grid>
                     <Grid item xs={12}>
-                        <StaffAbsencesCard title="Staff Absences" query="2141" />
+                        <TopCountriesTable />
                     </Grid>
                 </Grid>
             </Container>

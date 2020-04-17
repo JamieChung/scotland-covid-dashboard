@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, LinearProgress } from "@material-ui/core
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import React from "react";
-import { Bar, CartesianGrid, ComposedChart, Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, CartesianGrid, ComposedChart, Brush, Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import * as CHART_COLORS from '../../utils/chartcolors';
 import * as _ from 'lodash';
 
@@ -17,11 +17,11 @@ export default class StaffAbsencesCard extends React.Component<{ title: string, 
         // axios.get(utilities.createbaseURLWithQuery(this.props.query))
         axios.get('https://raw.githubusercontent.com/watty62/Scot_covid19/master/data/processed/staff_absences.csv')
             .then(response => {
-                csvtojson({headers: ['date', 'nurses_midwives', 'medical_dental', 'other', 'all']})
+                csvtojson({ headers: ['date', 'nurses_midwives', 'medical_dental', 'other', 'all'] })
                     .fromString(response.data)
                     .then((json) => {
-                        this.setState({ 
-                            value: json , ready: true 
+                        this.setState({
+                            value: json, ready: true
                         });
                     })
             })
@@ -42,10 +42,11 @@ export default class StaffAbsencesCard extends React.Component<{ title: string, 
                                 <Legend />
                                 <Tooltip />
                                 <CartesianGrid strokeDasharray="5 5" />
-                                <YAxis label={{ value: 'Staff Absences', angle: -90, position: 'insideLeft' }} />
+                                <Brush dataKey="date" height={30} stroke="#8884d8" />
+                                <YAxis />
                                 <XAxis
                                     dataKey="date"
-                                    allowDuplicatedCategory={false}
+                                // allowDuplicatedCategory={false}
                                 // tickFormatter={utilities.formatDateLabel}
                                 />
                             </ComposedChart>

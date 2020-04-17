@@ -1,10 +1,10 @@
 import { Divider } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
+import Head from 'next/head';
 import React from 'react';
 import ReactGA from 'react-ga';
 import App from './components/app';
-import Head from 'next/head';
 export default class HomePage extends React.Component {
 
     componentDidMount() {

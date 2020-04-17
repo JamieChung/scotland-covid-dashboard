@@ -1,5 +1,5 @@
 import React from "react";
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, LinearProgress } from "@material-ui/core";
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, LinearProgress, Card, CardHeader, CardContent } from "@material-ui/core";
 import axios from 'axios';
 import * as _ from 'lodash';
 import numeral from 'numeral';
@@ -38,7 +38,7 @@ export default class AreasCharts extends React.Component {
 
     state = {
         data: [],
-        loading: true
+        ready: false
     }
 
     componentDidMount() {
@@ -56,36 +56,38 @@ export default class AreasCharts extends React.Component {
 
                 this.setState({
                     data: _.groupBy(_build_data, 'Area'),
-                    loading: false
+                    ready: true
                 });
             })
     }
 
     render() {
 
-        if (this.state.loading) {
-            return <LinearProgress />
-        }
-
         return (
-            <Paper>
-                <ResponsiveContainer width='100%' height={500}>
-                    <LineChart>
-                        {_.map(this.state.data, function (data, k) {
-                            return <Line key={k} dataKey="TotalCases" name={k} data={data} stroke={seedColor(k).toHex()} />
-                        })}
-                        <Legend />
-                        <Tooltip />
-                        <CartesianGrid strokeDasharray="5 5" />
-                        <YAxis label={{ value: 'Total Cases', angle: -90, position: 'insideLeft' }} />
-                        <XAxis
-                            dataKey="Date"
-                            allowDuplicatedCategory={false}
-                            tickFormatter={formatDateLabel}
-                            />
-                    </LineChart>
-                </ResponsiveContainer>
-            </Paper>
+            <Card>
+                <CardHeader subheader="Scotland Cases by Regions" />
+                {this.state.ready ?
+                    <CardContent>
+                        <ResponsiveContainer width='100%' height={500}>
+                            <LineChart>
+                                {_.map(this.state.data, function (data, k) {
+                                    return <Line key={k} dataKey="TotalCases" name={k} data={data} stroke={seedColor(k).toHex()} />
+                                })}
+                                <Legend />
+                                <Tooltip />
+                                <CartesianGrid strokeDasharray="5 5" />
+                                <YAxis />
+                                <Brush dataKey="Date" height={30} stroke="#8884d8" />
+                                <XAxis
+                                    dataKey="Date"
+                                    allowDuplicatedCategory={false}
+                                    tickFormatter={formatDateLabel}
+                                    />
+                            </LineChart>
+                        </ResponsiveContainer>
+                    </CardContent> :
+                    <LinearProgress />}
+            </Card>
         )
     }
 }
