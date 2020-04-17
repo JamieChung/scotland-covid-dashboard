@@ -1,9 +1,9 @@
+import { Divider } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import ReactGA from 'react-ga';
 import App from './components/app';
-import { Divider, Grid } from '@material-ui/core';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
 
 export default class HomePage extends React.Component {
 
@@ -16,7 +16,9 @@ export default class HomePage extends React.Component {
         return (
             <html>
                 <head>
+                    <title>Scotland COVID Dashboard</title>
                     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+                    <meta name="description" content="Scotland COVID Dashboard tracking daily COVID-19 cases." />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                 </head>
                 <body>
