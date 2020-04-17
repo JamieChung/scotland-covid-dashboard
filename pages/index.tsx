@@ -23,10 +23,7 @@ export default class HomePage extends React.Component {
                 <Container>
                     <Typography variant="h4">Scotland COVID-19 Dashboard</Typography>
                     <Typography variant="overline" style={{ marginBottom: 25, display: 'block' }}>
-                        <span>Updated Daily - BST/GMT &middot; </span> 
-                        <ReactGA.OutboundLink style={{color: '#0366d6'}} eventLabel="outbound-feedback" target="_blank" to="mailto:me@jamiechung.me">
-                            Send Feedback
-                        </ReactGA.OutboundLink>
+                        <span>Updated Daily - BST/GMT</span>
                     </Typography>
                 </Container>
                 <App />
@@ -46,7 +43,7 @@ export default class HomePage extends React.Component {
                         <ReactGA.OutboundLink style={{color: '#0366d6'}} eventLabel="outbound-github.com/tomwhite/covid-19-uk-data" target="_blank" to="https://github.com/tomwhite/covid-19-uk-data">
                             Tom White
                         </ReactGA.OutboundLink>
-                        <span> - </span>
+                        <span> &middot; </span>
                         <ReactGA.OutboundLink style={{color: '#0366d6'}} eventLabel="outbound-github.com/watty62/Scot_covid19" target="_blank" to="https://github.com/watty62/Scot_covid19">
                             Ian Watty
                         </ReactGA.OutboundLink>
@@ -56,6 +53,12 @@ export default class HomePage extends React.Component {
                         
                         <ReactGA.OutboundLink style={{color: '#0366d6'}} eventLabel="outbound-github.com/jamiechung/scotland-covid-dashboard" target="_blank" to="https://github.com/JamieChung/scotland-covid-dashboard">
                             Contribute on GitHub
+                        </ReactGA.OutboundLink>
+
+                        <span> &middot; </span>
+
+                        <ReactGA.OutboundLink style={{color: '#0366d6'}} eventLabel="outbound-feedback" target="_blank" to="mailto:me@jamiechung.me">
+                            Send Feedback
                         </ReactGA.OutboundLink>
                         
                     </Typography>
