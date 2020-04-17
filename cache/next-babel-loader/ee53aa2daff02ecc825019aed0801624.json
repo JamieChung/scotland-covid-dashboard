@@ -1,1 +1,0 @@
-{"ast":null,"code":"export var COLOR_CONFIRMED_CASES_HEX = '#B6B0FF';\nexport var COLOR_TESTS_HEX = '#3049AD';\nexport var COLOR_DEATHS_HEX = '#FF994E';","map":null,"metadata":{},"sourceType":"module"}
