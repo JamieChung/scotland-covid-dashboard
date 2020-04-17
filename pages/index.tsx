@@ -24,13 +24,31 @@ export default class HomePage extends React.Component {
                 <Container style={{ marginTop: 50, marginBottom: 50 }}>
                     <Divider variant="middle" />
                     <Typography variant="body1" style={{ textAlign: 'center', marginTop: 25 }}>
+                        <span>Made with ❤️ by </span>
+                        <ReactGA.OutboundLink eventLabel="outbound-twitter.com/jamiechung" target="_blank" to="https://twitter.com/jamiechung">
+                            Jamie Chung
+                        </ReactGA.OutboundLink>
+                        <span> in Edinburgh, Scotland </span>
+                        
+                        <br />
+                        <br />
+
+                        <span> Data provided by </span>
+                        <ReactGA.OutboundLink eventLabel="outbound-github.com/tomwhite/covid-19-uk-data" target="_blank" to="https://github.com/tomwhite/covid-19-uk-data">
+                            Tom White
+                        </ReactGA.OutboundLink>
+                        <span> - </span>
+                        <ReactGA.OutboundLink eventLabel="outbound-github.com/watty62/Scot_covid19" target="_blank" to="https://github.com/watty62/Scot_covid19">
+                            Ian Watty
+                        </ReactGA.OutboundLink>
+
+                        <br />
+                        <br />
+                        
                         <ReactGA.OutboundLink eventLabel="outbound-github.com/jamiechung/scotland-covid-dashboard" target="_blank" to="https://github.com/JamieChung/scotland-covid-dashboard">
                             Contribute on GitHub
                         </ReactGA.OutboundLink>
-                        <span> - Made with ❤️ in Edinburgh, Scotland - </span>
-                        <ReactGA.OutboundLink eventLabel="outbound-github.com/tomwhite/covid-19-uk-data" target="_blank" to="https://github.com/tomwhite/covid-19-uk-data">
-                            Data provided by Tom White
-                        </ReactGA.OutboundLink>
+                        
                     </Typography>
                 </Container>
             </div>
