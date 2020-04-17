@@ -81,7 +81,7 @@ function singleCountryChart(title, data) {
     <Card>
       <CardHeader subheader={title} />
       <CardContent>
-        <ResponsiveContainer width='100%' height={500}>
+        <ResponsiveContainer width='100%' height={350}>
           <LineChart>
             <Line dataKey="ConfirmedCases" data={data} stroke={colors.COLOR_CONFIRMED_CASES_HEX} />
             <Line dataKey="Tests" data={data} stroke={colors.COLOR_TESTS_HEX} />

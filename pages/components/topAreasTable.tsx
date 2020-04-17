@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 import numeral from 'numeral';
 import React from "react";
 import AreaExpansionPanelDetail from './AreaExpansionPanelDetail';
+import ReactGA from 'react-ga';
 
 const query = `
 SELECT
@@ -38,6 +39,15 @@ export default class TopAreasTable extends React.Component {
         data: [],
         loading: true
     }
+
+    handleExpansionChange = (areaCode, areaName) => (event, isExpanded) => {
+        ReactGA.event({
+            category: 'Area Expansion',
+            action: isExpanded ? 'opened' : 'closed',
+            label: areaCode + ' ' + areaName
+        })
+
+    };
 
     componentDidMount() {
 
@@ -86,7 +96,7 @@ export default class TopAreasTable extends React.Component {
                 </TableContainer> */}
 
                 {this.state.data.map(row =>
-                    <ExpansionPanel key={(row.AreaCode)} TransitionProps={{ unmountOnExit: true }}>
+                    <ExpansionPanel key={(row.AreaCode)} TransitionProps={{ unmountOnExit: true }} onChange={this.handleExpansionChange(row.AreaCode, row.Area)}>
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography style={{ flexBasis: '80%' }}>{row.Area}</Typography>
                             <Typography style={{ color: '#AAA' }}>Confirmed Cases: {numeral(row.TotalCases).format('0,0')}</Typography>

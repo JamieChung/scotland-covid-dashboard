@@ -1,4 +1,4 @@
-import { Container, Grid, LinearProgress } from '@material-ui/core';
+import { Container, Grid, LinearProgress, Divider } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import * as _ from 'lodash';
@@ -66,7 +66,7 @@ export default class AreaExpansionPanelDetail extends React.Component<{ area?: s
         return this.state.ready ?
             <Container>
                 <Grid>
-                <Typography variant="subtitle1">Total Cases</Typography>
+                <Typography variant="subtitle2" style={{marginBottom:10}}>Total Cases</Typography>
                     <ResponsiveContainer width='100%' height={200}>
                         <LineChart data={this.state.data_total_cases}>
                             <Line type="monotone" fill={CHART_COLORS.COLOR_PBI_DEFAULT[0]} dataKey="TotalCases" name="Total Cases" />
@@ -83,7 +83,8 @@ export default class AreaExpansionPanelDetail extends React.Component<{ area?: s
                         </LineChart>
                     </ResponsiveContainer>
 
-                    <Typography variant="subtitle1">Total Hospitalizations</Typography>
+                    <Typography variant="subtitle2" style={{marginBottom:10, marginTop: 25}}>Total Hospitalisations</Typography>
+
                     <ResponsiveContainer width='100%' height={200}>
                         <LineChart data={this.state.data_regional_hospitalizatons}>
                             <Line type="monotone" fill={CHART_COLORS.COLOR_PBI_DEFAULT[1]} dataKey={this.props.area} name="Regional Hospitalizations" />

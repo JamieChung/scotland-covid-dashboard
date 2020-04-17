@@ -39,7 +39,7 @@ export default class ICUTrendCard extends React.Component<{ title: string, query
                 <CardHeader subheader={this.props.title} />
                 {this.state.ready ?
                     <CardContent>
-                        <ResponsiveContainer width='100%' height={500}>
+                        <ResponsiveContainer width='100%' height={350}>
                             <LineChart data={this.state.value}>
                                 <Line type="monotone" fill={CHART_COLORS.COLOR_PBI_DEFAULT[0]} dataKey="icu_patients" name="ICU Patients" />
                                 <Legend />

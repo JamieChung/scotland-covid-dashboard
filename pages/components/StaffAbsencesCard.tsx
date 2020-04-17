@@ -33,7 +33,7 @@ export default class StaffAbsencesCard extends React.Component<{ title: string, 
                 <CardHeader subheader={this.props.title} />
                 {this.state.ready ?
                     <CardContent>
-                        <ResponsiveContainer width='100%' height={500}>
+                        <ResponsiveContainer width='100%' height={350}>
                             <ComposedChart data={this.state.value}>
                                 <Bar barSize={20} stackId="a" fill={CHART_COLORS.COLOR_PBI_DEFAULT[0]} dataKey="nurses_midwives" name="Nurses and Midwives" />
                                 <Bar barSize={20} stackId="a" fill={CHART_COLORS.COLOR_PBI_DEFAULT[1]} dataKey="medical_dental" name="Medical and Dental" />
