@@ -1,0 +1,1 @@
+{"ast":null,"code":"export function createBaseWithDB(db) {\n  return 'https://covid-19-uk-datasette-65tzkjlxkq-ew.a.run.app/' + db + '.json';\n}\nexport function createbaseURLWithQuery(query) {\n  return createBaseWithDB('covid-19-uk') + '?sql=' + encodeURIComponent(query);\n}","map":null,"metadata":{},"sourceType":"module"}
