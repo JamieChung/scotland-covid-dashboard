@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[16],{Um1T:function(n,o,w){(window.__NEXT_P=window.__NEXT_P||[]).push(["/components/AreaExpansionPanelDetail",function(){return w("1Npv")}])}},[["Um1T",0,1,5,6,2,3,4,8]]]);
