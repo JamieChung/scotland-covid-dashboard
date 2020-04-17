@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[23],{WcsF:function(n,o,w){(window.__NEXT_P=window.__NEXT_P||[]).push(["/components/topAreasTable",function(){return w("bLCj")}])}},[["WcsF",0,1,4,6,2,3,5,7,8,10]]]);

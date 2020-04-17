@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[24],{tK3L:function(n,o,t){(window.__NEXT_P=window.__NEXT_P||[]).push(["/components/topCountriesTable",function(){return t("+HKp")}])},yLpj:function(n,o){var t;t=function(){return this}();try{t=t||new Function("return this")()}catch(w){"object"===typeof window&&(t=window)}n.exports=t}},[["tK3L",0,1,4,2,7,9]]]);
