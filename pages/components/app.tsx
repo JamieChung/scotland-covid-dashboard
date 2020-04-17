@@ -10,6 +10,7 @@ import TopAreasTable from '../components/topAreasTable';
 import TopCountriesTable from '../components/topCountriesTable';
 import ICUTrendCard from './ICUTrendCard';
 import StaffAbsencesCard from './StaffAbsencesCard';
+import DailyChangeCasesCard from './DailyChangeCasesCard';
 
 export default class App extends React.Component {
 
@@ -40,6 +41,9 @@ export default class App extends React.Component {
                     </Grid>
                     <Grid item xs={12}>
                         <CountryCharts />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <DailyChangeCasesCard title="Daily Change of Confirmed Cases in Scotland" />
                     </Grid>
                     <Grid item xs={12}>
                         <ICUTrendCard title="Scotland Intensive Care (ICU) Utilisation" query="2141" />
