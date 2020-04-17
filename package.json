@@ -8,10 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
     "build": "next build",
-    "export": "next export",
+    "export": "next export && touch out/.nojekyll",
     "start": "next start",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d out"
+    "deploy": "next export && touch out/.nojekyll && gh-pages --dotfiles -d out"
   },
   "author": "",
   "license": "ISC",

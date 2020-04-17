@@ -77,6 +77,8 @@ typings/
 
 # Next.js build output
 .next
+# next.js out directory for export
+out
 
 # Nuxt.js build / generate output
 .nuxt
