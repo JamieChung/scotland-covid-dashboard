@@ -16,8 +16,6 @@ export default class App extends React.Component {
     render() {
         return (
             <Container>
-                <Typography variant="h4">Scotland COVID-19 Dashboard</Typography>
-                <Typography variant="overline" style={{ marginBottom: 25, display: 'block' }}>Updated Daily - BST/GMT</Typography>
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <Typography variant="h5">Scotland Overview</Typography>
