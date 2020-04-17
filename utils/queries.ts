@@ -162,37 +162,47 @@ collapsed AS (
       _confirmed.Country = _deaths.Country
       AND _confirmed.Date = _deaths.Date
     )
+),
+latest AS (
+  SELECT
+    Date,
+    ConfirmedCases - COALESCE(
+      LAG(ConfirmedCases) OVER (
+        PARTITION BY Country
+        ORDER BY
+          Date
+      ),
+      0
+    ) AS DalyChangeConfirmedCases,
+    Tests - COALESCE(
+      LAG(Tests) OVER (
+        PARTITION BY Country
+        ORDER BY
+          Date
+      ),
+      0
+    ) AS DailyChangeTests,
+    Deaths - COALESCE(
+      LAG(Deaths) OVER (
+        PARTITION BY Country
+        ORDER BY
+          Date
+      ),
+      0
+    ) AS DailyChangeDeaths
+  FROM
+    collapsed
+  WHERE
+    Country IN ('Scotland')
+  ORDER BY
+    Date DESC
+  LIMIT
+    45
 )
 SELECT
-  Date,
-  ConfirmedCases - COALESCE(
-    LAG(ConfirmedCases) OVER (
-      PARTITION BY Country
-      ORDER BY
-        Date
-    ),
-    0
-  ) AS DalyChangeConfirmedCases,
-  Tests - COALESCE(
-    LAG(Tests) OVER (
-      PARTITION BY Country
-      ORDER BY
-        Date
-    ),
-    0
-  ) AS DailyChangeTests,
-  Deaths - COALESCE(
-    LAG(Deaths) OVER (
-      PARTITION BY Country
-      ORDER BY
-        Date
-    ),
-    0
-  ) AS DailyChangeDeaths
+  *
 FROM
-  collapsed
-WHERE
-  Country IN ('Scotland')
+  latest
 ORDER BY
   Date ASC
 `;

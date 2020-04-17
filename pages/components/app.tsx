@@ -43,7 +43,7 @@ export default class App extends React.Component {
                         <CountryCharts />
                     </Grid>
                     <Grid item xs={12}>
-                        <DailyChangeCasesCard title="Daily Change of Confirmed Cases in Scotland" />
+                        <DailyChangeCasesCard title="Daily Change of Confirmed Cases in Scotland (past 60 days)" />
                     </Grid>
                     <Grid item xs={12}>
                         <ICUTrendCard title="Scotland Intensive Care (ICU) Utilisation" query="2141" />
